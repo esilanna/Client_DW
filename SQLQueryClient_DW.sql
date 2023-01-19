@@ -58,6 +58,7 @@ GO
 
 -- Creating Location Dimension Table --
 CREATE TABLE Dimension.Location (
+    LocationKey int IDENTITY (1,1) NOT NULL,
     City nvarchar(50) NOT NULL,
     State char(2) NOT NULL,
     StateName nvarchar(20) NOT NULL,
@@ -138,6 +139,7 @@ GO
 -- Creating a Columnstore Index for Performance Optimization of analytical queries --
 CREATE COLUMNSTORE INDEX IX_CS_FactAccounts
 ON Fact.Accounts (AccountID, DateKey, CustomerKey, ServiceKey, LocationKey, InvoiceTotal);
+
 
 -- Rebuild Statement if fragmentation starts to happen (drops the index and rebuilds it entirely) --
 -- ALTER INDEXIX_CS_FactAccounts 
