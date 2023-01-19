@@ -35,7 +35,6 @@ CREATE TABLE Dimension.Customer (
     CustomerAlternateKey int NOT NULL,
     FirstName nvarchar(50) NOT NULL,
     LastName nvarchar(50) NOT NULL,
-    FullName nvarchar(100) NOT NULL,
     Company nvarchar(100) NOT NULL
 
     CONSTRAINT PK_Customer PRIMARY KEY CLUSTERED (
