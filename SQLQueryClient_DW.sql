@@ -1,4 +1,4 @@
--- Creating ClientDw Database --
+-- Creating ClientDw Database (Run these first) --
 CREATE DATABASE ClientDw;
 USE ClientDw;
 
