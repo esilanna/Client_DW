@@ -36,13 +36,36 @@ CREATE TABLE Dimension.Customer (
     FirstName nvarchar(50) NOT NULL,
     LastName nvarchar(50) NOT NULL,
     FullName nvarchar(100) NOT NULL,
-    City nvarchar(50) NOT NULL,
-    State char(2) NOT NULL,
-    StateName nvarchar(20) NOT NULL,
-    Zip char(5) NOT NULL
+    Company nvarchar(100) NOT NULL
 
     CONSTRAINT PK_Customer PRIMARY KEY CLUSTERED (
         CustomerKey ASC
+    )
+);
+GO
+
+-- Creating Service Dimension Table --
+CREATE TABLE Dimension.Service (
+    ServiceKey int IDENTITY (1,1) NOT NULL,
+    ServiceType nvarchar(100) NOT NULL,
+    ServicePrice money NOT NULL
+
+    CONSTRAINT PK_Service PRIMARY KEY CLUSTERED (
+        ServiceKey ASC
+    )
+);
+GO
+
+-- Creating Location Dimension Table --
+CREATE TABLE Dimension.Location (
+    City nvarchar(50) NOT NULL,
+    State char(2) NOT NULL,
+    StateName nvarchar(20) NOT NULL,
+    Zip char(5) NOT NULL,
+    Continent nvarchar(20) NOT NULL
+
+    CONSTRAINT PK_Location PRIMARY KEY CLUSTERED (
+        LocationKey ASC
     )
 );
 GO
@@ -52,6 +75,8 @@ CREATE TABLE Fact.Accounts (
     AccountID int IDENTITY (1,1) NOT NULL,
     DateKey int NOT NULL,
     CustomerKey int NOT NULL,
+    ServiceKey int NOT NULL,
+    LocationKey int NOT NULL,
     InvoiceTotal money NOT NULL
 
     CONSTRAINT PK_Account PRIMARY KEY CLUSTERED (
@@ -76,6 +101,22 @@ GO
 ALTER TABLE Fact.Accounts CHECK CONSTRAINT FK_Fact_Accounts_CustomerKey_Dimension_Customer;
 GO
 
+-- Adding the relationship between Accounts Fact Table and Service Dimension Table --
+ALTER TABLE Fact.Accounts WITH CHECK ADD CONSTRAINT FK_Fact_Accounts_ServiceKey_Dimension_Service FOREIGN KEY(ServiceKey)
+REFERENCES Dimension.Service (ServiceKey);
+GO
+
+ALTER TABLE Fact.Accounts CHECK CONSTRAINT FK_Fact_Accounts_ServiceKey_Dimension_Service;
+GO
+
+-- Adding the relationship between Accounts Fact Table and Location Dimension Table --
+ALTER TABLE Fact.Accounts WITH CHECK ADD CONSTRAINT FK_Fact_Accounts_LocationKey_Dimension_Location FOREIGN KEY(LocationKey)
+REFERENCES Dimension.Location (LocationKey);
+GO
+
+ALTER TABLE Fact.Accounts CHECK CONSTRAINT FK_Fact_Accounts_LocationKey_Dimension_Location;
+GO
+
 -- Creating a View --
 CREATE VIEW dbo.AccountsByDate
     WITH SCHEMABINDING
@@ -96,7 +137,7 @@ GO
 
 -- Creating a Columnstore Index for Performance Optimization of analytical queries --
 CREATE COLUMNSTORE INDEX IX_CS_FactAccounts
-ON Fact.Accounts (AccountID, DateKey, CustomerKey, InvoiceTotal);
+ON Fact.Accounts (AccountID, DateKey, CustomerKey, ServiceKey, LocationKey, InvoiceTotal);
 
 -- Rebuild Statement if fragmentation starts to happen (drops the index and rebuilds it entirely) --
 -- ALTER INDEXIX_CS_FactAccounts 
