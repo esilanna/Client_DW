@@ -1,3 +1,8 @@
+-- Creating ClientDw Database --
+CREATE DATABASE ClientDw;
+USE ClientDw;
+
+GO
 -- Creating Fact Schema for all of my fact tables --
 CREATE SCHEMA Fact;
 GO
