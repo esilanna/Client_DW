@@ -1,0 +1,4 @@
+-- Rebuild Statement if fragmentation starts to happen (drops the index and rebuilds it entirely) --
+-- ALTER INDEXIX_CS_FactAccounts 
+-- ON Fact.Accounts
+-- REBUILD WITH (ONLINE = ON);
