@@ -15,7 +15,7 @@ SELECT * FROM sys.schemas;
 
 -- Creating Date Dimension Table --
 CREATE TABLE Dimension.Date (
-    DateKey int NOT NULL,
+    DateKey int IDENTITY (1, 1) NOT NULL,
     FullDate date NOT NULL,
     DayName nvarchar(9) NOT NULL,
     DayNumber tinyint NOT NULL,
