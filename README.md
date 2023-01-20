@@ -1,7 +1,7 @@
 # Client Log Data Warehouse #
 ## A Data Warehouse made using MS SQL Server and a Star Schema Modeling Approach ##
 
-### This Git Repo serves as a reource to recreate this project locally if you choose to do so :) ###
+ This Git Repo serves as a reource to recreate this project locally if you choose to do so :) 
 
 ⭐️ Disclaimer: Because I am operating on macOS & an Apple Chip, my MS SQL Server is running in a Docker Container ⭐️
 
@@ -11,7 +11,7 @@ MS SQL: https://hub.docker.com/_/microsoft-azure-sql-edge
 ### SQL Server Client Used: ###
 Azure Data Studio: https://azure.microsoft.com/en-us/products/data-studio
 
-### All SQL Queries for the current version of Client Log DW are in their respective folders, and images of the Star Schema ER Diagram as well as sample outputs will be linked in the iImages folder ###
+ All SQL Queries for the current version of Client Log DW are in their respective folders, and images of the Star Schema ER Diagram as well as sample outputs will be linked in the iImages folder 
 
 **Version One: MVP**
 - Basic Star Schema Defined
