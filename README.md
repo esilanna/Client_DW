@@ -28,14 +28,10 @@ Azure Data Studio: https://azure.microsoft.com/en-us/products/data-studio
 - Connected Adminer, which is a PHP connection to a front end, so data is easy to view, read, and edit if necessary (example photo seen in images folder)
 - higher volumes of dummy data produced and inserted into the data warehouse
 
-##⭐️ Instructions to Reproduce on Your Local Machine ⭐️##
+## ⭐️ Instructions to Reproduce on Your Local Machine ⭐️ ##
 - Install Docker and make sure you can access Docker Hub
 - run this command in your terminal to create a container for our MS SQL Data Warehouse: 
-**docker run -d --name sqldb --cap-add SYS_PTRACE \                       
-  -e 'ACCEPT_EULA=1' \
-  -e 'MSSQL_SA_PASSWORD=AdminPassword' \
-  -p 57000:1433 \
-   mcr.microsoft.com/azure-sql-edge**
+**docker run -d --name sqldb --cap-add SYS_PTRACE \ -e 'ACCEPT_EULA=1' \ -e 'MSSQL_SA_PASSWORD=AdminPassword' \ -p 57000:1433 \ mcr.microsoft.com/azure-sql-edge**
 - Install Azure Data Studio or an MS SQL supporting client to easily connect to our server
 - Use 'SA' for the username and the password we used above (AdminPassword) to connect to your server ⭐️Disclaimer: this is for educational purposes, if you plan on using this tutorial to store sensitive information DO NOT share your login information :)
 - Clone this repository and run the queries in the Create-Queries and Alter-Queries folder
