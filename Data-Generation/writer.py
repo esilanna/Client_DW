@@ -3,18 +3,18 @@ import random
 fake = Faker()
 
 #Change this number to generate more data entries
-num_data_entries = 10
+num_data_entries = 50
 
 # Creating a list of Service Types to be included in insert into dimension.Service query 
-services = ["Account Managemenet", "Financial Advisor Services", "Debt Restructuring", "Metrics Reporting"]
+services = ["'Account Managemenet'", "'Financial Advisor Services'", "'Debt Restructuring'", "'Metrics Reporting'"]
 
 # Creating a list of dates so that they align (day name is actually associated with day num, etc)
-dates = [["'2023-01-10'", "'Tuesday'", "10", "'January'", "01", "2023"], 
-        ["'2023-01-09'", "'Wednesday'", "09", "'January'", "01", "2023"], 
-        ["'2023-01-08'", "'Thursday'", "08", "'January'", "01", "2023"], 
-        ["'2023-01-07'", "'Friday'", "07", "'January'", "01", "2023"], 
-        ["'2023-01-06'", "'Saturday'", "06", "'January'", "01", "2023"], 
-        ["'2023-01-05'", "'Sunday'", "05", "'January'", "01", "2023"]]
+dates = [["'2023-01-10'", "'Tuesday'", "10", "'January'", "01", "23"], 
+        ["'2023-01-09'", "'Wednesday'", "09", "'January'", "01", "23"], 
+        ["'2023-01-08'", "'Thursday'", "08", "'January'", "01", "23"], 
+        ["'2023-01-07'", "'Friday'", "07", "'January'", "01", "23"], 
+        ["'2023-01-06'", "'Saturday'", "06", "'January'", "01", "23"], 
+        ["'2023-01-05'", "'Sunday'", "05", "'January'", "01", "23"]]
 
 # Creating a list of locations so they align (state matches city, which matches zip, etc.)
 locations = [["'New York'", "'NY'", "'New York'", "10001", "'North America'"],
@@ -25,19 +25,21 @@ locations = [["'New York'", "'NY'", "'New York'", "10001", "'North America'"],
         ["'Miami'", "'FL'", "'Florida'", "33101", "'North America'"],]
 
 # For Customer Table: First Name, Last Name, Full name, company
-with open('./Data-Generation/dummy_dimension.customer.txt', 'w') as f:
-    f.write("INSERT INTO Dimension.Customer VALUES (\n")
+with open('./Insert-Queries/dummy_dimension.customer.sql', 'w') as f:
+    f.write("USE ClientDW;\nGO\n")
+    f.write("INSERT INTO Dimension.Customer VALUES \n")
     for _ in range(num_data_entries):
         f.write("   (" + "'" + fake.first_name() + "'" + ", " + "'" + fake.last_name() + "'" + ", " + "'" + fake.company() + "'")
         if _ == (num_data_entries - 1):
             f.write(")\n")
         else:
             f.write( "),\n")
-    f.write(");")
+    f.write(";")
 
 # For Date Table: Full date, Day name, day number, month name, month number, year
-with open('./Data-Generation/dummy_dimension.date.txt', 'w') as f:
-    f.write("INSERT INTO Dimension.Date VALUES (\n")
+with open('./Insert-Queries/dummy_dimension.date.sql', 'w') as f:
+    f.write("USE ClientDW;\nGO\n")
+    f.write("INSERT INTO Dimension.Date VALUES \n")
     for _ in range(num_data_entries):
         currentDate = dates[random.randint(0, 5)]
         f.write("   (" + currentDate[0] + ", " + currentDate[1] + ", " + currentDate[2] + ", " + currentDate[3] + ", " + currentDate[4] + ", " + currentDate[5])
@@ -45,11 +47,12 @@ with open('./Data-Generation/dummy_dimension.date.txt', 'w') as f:
             f.write(")\n")
         else:
             f.write( "),\n")
-    f.write(");")
+    f.write(";")
 
 # For Lcoation table: city, state, state name, zip, continent
-with open('./Data-Generation/dummy_dimension.location.txt', 'w') as f:
-    f.write("INSERT INTO Dimension.Location VALUES (\n")
+with open('./Insert-Queries/dummy_dimension.location.sql', 'w') as f:
+    f.write("USE ClientDW;\nGO\n")
+    f.write("INSERT INTO Dimension.Location VALUES \n")
     for _ in range(num_data_entries):
         currentLocation = locations[random.randint(0, 5)]
         f.write("   (" + currentLocation[0] + ", " + currentLocation[1] + ", " + currentLocation[2] + ", " + currentLocation[3] + ", " + currentLocation[4])
@@ -57,11 +60,12 @@ with open('./Data-Generation/dummy_dimension.location.txt', 'w') as f:
             f.write(")\n")
         else:
             f.write( "),\n")
-    f.write(");")
+    f.write(";")
 
 # For Service Table: ServiceType, ServicePrice
-with open('./Data-Generation/dummy_dimension.service.txt', 'w') as f:
-    f.write("INSERT INTO Dimension.Service VALUES (\n")
+with open('./Insert-Queries/dummy_dimension.service.sql', 'w') as f:
+    f.write("USE ClientDW;\nGO\n")
+    f.write("INSERT INTO Dimension.Service VALUES \n")
     for _ in range(num_data_entries):
         f.write("   (" + services[random.randint(0, 3)] + ", ")
         f.write(str(random.randint(0, 1000)))
@@ -69,11 +73,12 @@ with open('./Data-Generation/dummy_dimension.service.txt', 'w') as f:
             f.write(")\n")
         else:
             f.write( "),\n")
-    f.write(");")
+    f.write(";")
 
 # Writing Insert Query for Fact.Account Table
-with open('./Data-Generation/dummy_fact.account.txt', 'w') as f:
-    for i in range(1,11):
+with open('./Insert-Queries/dummy_fact.account.sql', 'w') as f:
+    f.write("USE ClientDW;\nGO\n")
+    for i in range(1,(num_data_entries + 1)):
         f.write("INSERT INTO Fact.Accounts VALUES \n")
         f.write("   ((SELECT DateKey FROM Dimension.[Date] WHERE DateKey = " + str(i) + "),\n")
         f.write("   (SELECT CustomerKey FROM Dimension.[Customer] WHERE CustomerKey = " + str(i) + "),\n")
