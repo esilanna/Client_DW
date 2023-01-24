@@ -1,3 +1,14 @@
+USE ClientDW;
+GO
+
+-- Query to show total sales --
+SELECT SUM(Fact.Accounts.InvoiceTotal) AS "Total Sales"
+FROM Fact.Accounts;
+
+-- Query to show total Accounts in Warehouse --
+SELECT COUNT(Fact.Accounts.AccountID) AS "# Of Accounts"
+FROM Fact.Accounts;
+
 -- Query to show how many states have accounts associated with them -- 
 SELECT COUNT(Fact.Accounts.LocationKey) AS "Account Table Location Key", 
 Dimension.[Location].[State]
