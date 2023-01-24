@@ -3,20 +3,24 @@
 
 ### Purpose of Project: Build a Data Warehouse for a business to store and analyze customer information using MS SQL Server and a Star Shema Data Warehouse model. ###
 
-**Schemas Overview:**
+#### Schemas Overview: ####
 - Fact: The fact schema is used to organize fact tables and keep them all together
 - Dimension: The dimension schema is used to organize the dimension tables and keep them all together
 
+#### Tables Overview: ####
+
 **Fact Table Overview:**
+
 Fact.Accounts
-    - AccountID: Primary Key for the table
-    - DateKey: Surrogate key pointing to the date table
-    - CustomerKey: Surrogate key pointing to the customer table
-    - ServiceKey: Surrogate key pointing to the service table
-    - LocationKey: Surrogate key pointing to the location table
-    - InvoiceTotal: The price of the services for the current service table row from above
+- AccountID: Primary Key for the table
+- DateKey: Surrogate key pointing to the date table
+- CustomerKey: Surrogate key pointing to the customer table
+- ServiceKey: Surrogate key pointing to the service table
+- LocationKey: Surrogate key pointing to the location table
+- InvoiceTotal: The price of the services for the current service table row from above
 
 **Dimension Table Overview:**
+
 Dimension.Customer
 - CustomerKey: Primary key for the customer table
 - FirstName: First name of the client
@@ -44,3 +48,5 @@ Dimension.Service
 - ServiceKey: Primary key for the service table
 - ServiceType: The type of service provided to the client
 - ServicePrice: the price of the service provided to the client
+
+#### Views Overview: ####
