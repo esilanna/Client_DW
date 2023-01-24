@@ -33,6 +33,7 @@ Azure Data Studio: https://azure.microsoft.com/en-us/products/data-studio
 2. Run this command in your terminal to create a container for our MS SQL Data Warehouse: 
 
 **` docker run -d --name sqldb --cap-add SYS_PTRACE \ -e 'ACCEPT_EULA=1' \ -e 'MSSQL_SA_PASSWORD=AdminPassword' \ -p 57000:1433 \ mcr.microsoft.com/azure-sql-edge`**
+
 3. Install Azure Data Studio or an MS SQL supporting client to easily connect to our server
 4. Use 'SA' for the username and the password we used above (AdminPassword) to connect to your server ⭐️Disclaimer: this is for educational purposes, if you plan on using this tutorial to store sensitive information DO NOT share your login information :)
 5. Clone this repository and run the queries in the Create-Queries and Alter-Queries folder
@@ -40,7 +41,8 @@ Azure Data Studio: https://azure.microsoft.com/en-us/products/data-studio
 7. By this point you should have your Data Warehouse running and can run the Select queries to view your data (or write your own)
 8. to connect adminer, go to your temrinal and simply execute this command:
 
-**docker run --link sqldb:db -p 8080:8080 adminer** 
+**`docker run --link sqldb:db -p 8080:8080 adminer`** 
+
   (if you named your container something else, enter the name where 'sqldb' is located in my command)
   go to localhost:8080 on your browser, you should see a login screen, this is where our SQL Credentials from before come in handy!
 9. Select MS SQL from the dropdown menu, enter 'SA' for username, and 'AdminPassword' for password (of course use your own password if you chose to change it) You can leave the database section blank for now, press enter
