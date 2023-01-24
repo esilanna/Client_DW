@@ -1,7 +1,7 @@
 # Client Log Data Warehouse #
 ## A Data Warehouse made using MS SQL Server and a Star Schema Modeling Approach ##
 
- This Git Repo serves as a reource to recreate this project locally if you choose to do so :) 
+ This Git Repo serves as an overview and reource to recreate this project locally if you choose to do so :) 
 
 ⭐️ Disclaimer: Because I am operating on macOS & an Apple Chip, my MS SQL Server is running in a Docker Container ⭐️
 
@@ -23,14 +23,14 @@ Azure Data Studio: https://azure.microsoft.com/en-us/products/data-studio
 - Basic SQL Queries returning proper data (See images for example output)
 
 **Version Two: Python Generated Data and Adminer Front End Connection**
-- writer.py generates more advanced dummy data and stores the generated queries in the Insert-Queries folder, so the user just needs to press run on the query
+- writer.py generates more advanced dummy data and stores the generated queries in the Insert-Queries folder, so the user just needs to press run on the query after its generated
 - Created views to view and analyze information stored in the data warehouse, like CustomersByLocation, AccountsByDate, etc.
 - Connected Adminer, which is a PHP connection to a front end, so data is easy to view, read, and edit if necessary (example photo seen in images folder)
 - higher volumes of dummy data produced and inserted into the data warehouse
 
 ## ⭐️ Instructions to Reproduce on Your Local Machine ⭐️ ##
-- Install Docker and make sure you can access Docker Hub
-- run this command in your terminal to create a container for our MS SQL Data Warehouse: 
+- Install Docker and make sure you can access Docker Dashboard
+- Run this command in your terminal to create a container for our MS SQL Data Warehouse: 
 
 **docker run -d --name sqldb --cap-add SYS_PTRACE \ -e 'ACCEPT_EULA=1' \ -e 'MSSQL_SA_PASSWORD=AdminPassword' \ -p 57000:1433 \ mcr.microsoft.com/azure-sql-edge**
 - Install Azure Data Studio or an MS SQL supporting client to easily connect to our server
@@ -43,6 +43,6 @@ Azure Data Studio: https://azure.microsoft.com/en-us/products/data-studio
 **docker run --link sqldb:db -p 8080:8080 adminer** 
   (if you named your container something else, enter the name where 'sqldb' is located in my command)
   go to localhost:8080 on your browser, you should see a login screen, this is where our SQL Credentials from before come in handy!
-- Select MS SQL from the dropdwon menu, enter 'SA' for username, and 'AdminPassword' for password (of course use your own password if you chose to cahnge it) You can leave the database section blank for now, press enter
-- You should now be located in your Adminer 'dashboard' (see an example of this in the images folder). Because the Scripts you ran previously created dbo views, you should see them on the left hand shide of your screen, feel free to check them out!
+- Select MS SQL from the dropdown menu, enter 'SA' for username, and 'AdminPassword' for password (of course use your own password if you chose to change it) You can leave the database section blank for now, press enter
+- You should now be located in your Adminer 'dashboard' (see an example of this in the images folder). Because the Scripts you ran previously created dbo views, you should see them on the left hand side of your screen, feel free to check them out!
 - Play around, edit things, add things, have fun!
