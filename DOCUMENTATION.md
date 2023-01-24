@@ -2,7 +2,7 @@
 ## A Data Warehouse made using MS SQL Server and a Star Schema Modeling Approach ##
 
 ### Purpose of Project: Build a Data Warehouse for a business to store and analyze customer information using MS SQL Server and a Star Shema Data Warehouse model, incorporating Python for automation ###
-### See README.md for instructions on how to reproduce this project locally.###
+### See README.md for instructions on how to reproduce this project locally. ###
 
 #### Schemas Overview: ####
 - Fact: The fact schema is used to organize fact tables and keep them all together
