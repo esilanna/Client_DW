@@ -1,3 +1,6 @@
+USE ClientDw;
+GO 
+
 CREATE UNIQUE CLUSTERED INDEX IDX_AccountsByDate
     ON dbo.AccountsByDate (AccountID);
 GO
@@ -10,8 +13,8 @@ CREATE UNIQUE CLUSTERED INDEX IDX_AccountsByService
     ON dbo.AccountsByService (AccountID);
 GO
 
-CREATE UNIQUE CLUSTERED INDEX IDX_CustomersByLocation
-    ON dbo.CustomersByLocation (AccountID);
+CREATE UNIQUE CLUSTERED INDEX IDX_HighestPayingCustomers
+    ON dbo.HighestPayingCustomers (AccountID);
 GO
 
 -- Creating a Columnstore Index for Performance Optimization of analytical queries --

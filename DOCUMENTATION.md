@@ -3,11 +3,11 @@
 
 ### Purpose of Project: Build a Data Warehouse for a business to store and analyze customer information using MS SQL Server and a Star Shema Data Warehouse model. ###
 
-#### Schemas Overview: ####
+### Schemas Overview: ###
 - Fact: The fact schema is used to organize fact tables and keep them all together
 - Dimension: The dimension schema is used to organize the dimension tables and keep them all together
 
-#### Tables Overview: ####
+### Tables Overview: ###
 
 **Fact Table Overview:**
 
@@ -49,4 +49,5 @@ Dimension.Service
 - ServiceType: The type of service provided to the client
 - ServicePrice: the price of the service provided to the client
 
-#### Views Overview: ####
+### Views Overview: ###
+**AccountsByDate:**

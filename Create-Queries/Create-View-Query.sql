@@ -1,3 +1,6 @@
+USE ClientDw;
+GO 
+
 -- Creating a View for Accounts By Date --
 CREATE VIEW dbo.AccountsByDate
     WITH SCHEMABINDING
@@ -19,6 +22,7 @@ CREATE VIEW dbo.AccountsByLocation
 ;
 GO
 
+-- Creating a View for Accounts By Service --
 CREATE VIEW dbo.AccountsByService
     WITH SCHEMABINDING
     AS
@@ -28,12 +32,36 @@ CREATE VIEW dbo.AccountsByService
 ;
 GO
 
-CREATE VIEW dbo.CustomersByLocation
+-- Creating a View for Highest Paying Customers --
+CREATE VIEW dbo.HighestPayingCustomers
     WITH SCHEMABINDING
     AS
-        SELECT Accounts.AccountID, Accounts.CustomerKey, Accounts.LocationKey, Location.City, Customer.FirstName, Customer.LastName,
-            Location.StateName, Location.Zip, Location.Continent
-            FROM Fact.Accounts JOIN Dimension.Customer ON Accounts.CustomerKey = Customer.CustomerKey
-                JOIN Dimension.Location ON Accounts.LocationKey = Location.LocationKey
+        SELECT Accounts.AccountID, Accounts.CustomerKey, Accounts.InvoiceTotal, Customer.FirstName, Customer.LastName,
+            Customer.Company
+        FROM Fact.Accounts JOIN Dimension.Customer ON Accounts.CustomerKey = Customer.CustomerKey
+        WHERE Accounts.InvoiceTotal > (SELECT AVG(Accounts.InvoiceTotal)FROM Fact.Accounts)
+;
+GO
+
+-- Creating a View for Sales in the East Coast --
+CREATE VIEW dbo.SalesInEast
+    WITH SCHEMABINDING
+    AS 
+        SELECT Accounts.AccountID, Accounts.LocationKey, Accounts.InvoiceTotal, 
+            Location.City, Location.State, Location.Zip
+        FROM Fact.Accounts JOIN Dimension.[Location] ON Accounts.LocationKey = [Location].LocationKey
+        WHERE Dimension.[Location].[StateName] = 'New York' OR Dimension.[Location].[StateName] = 'Miami'
+;
+GO
+
+-- Creating a View for Sales in the West Coast --
+CREATE VIEW dbo.SalesInWest
+    WITH SCHEMABINDING
+    AS 
+        SELECT Accounts.AccountID, Accounts.LocationKey, Accounts.InvoiceTotal, 
+            Location.City, Location.State, Location.Zip
+        FROM Fact.Accounts JOIN Dimension.[Location] ON Accounts.LocationKey = [Location].LocationKey
+        WHERE Dimension.[Location].[StateName] = 'Colorado' OR Dimension.[Location].[StateName] = 'Oregon'
+        OR Dimension.[Location].[StateName] = 'California'
 ;
 GO
