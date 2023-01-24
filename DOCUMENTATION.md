@@ -55,8 +55,8 @@ Dimension.Service
 - AccountsByLocation: View with a unique clustered index that returns all accounts and the where the clients are located
 - AccountsByService: View with a unique clustered index that returns all accounts and the services associated with them 
 - HighestPayingCustomers: View that returns the top highest paying accounts
-- HighestPayingStates: View that returns the states with the highest paying clients
-- MostUsedServices: View that returns the most used services offered among the clients
+- SalesInEast: View that returns the sales in the East
+- SalesInWest: View that returns the sales in the West
 
 ## An Overview of the writer.py Script ##
 #### writer.py was created to bulk produce dummy data to fill the data warehouse. writer.py uses the faker library to produce data see https://fakerjs.dev/ for more info), and also uses lists of dates, states, etc. ####
