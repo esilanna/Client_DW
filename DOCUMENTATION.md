@@ -22,6 +22,7 @@ Dimension.Customer
 - FirstName: First name of the client
 - LastName: Last name of the client
 - Company: name of the company of the client
+
 Dimension.Date
 - DateKey: Primary key for the date table
 - FullDate: full date for when service was provided in the following format: 'YYYY-MM-DD'
@@ -30,6 +31,7 @@ Dimension.Date
 - MonthName: name of month from full date above
 - MonthNumber: month number in context of the year from full date above
 - Year: last two digits of the year from full date above
+
 Dimension.Location
 - LocationKey: Primary key for the location table
 - City: City name for the city the client is in
@@ -37,6 +39,7 @@ Dimension.Location
 - StateName: Full name of state that the client is in 
 - Zip: Zip code for the client's city
 - Continent: Continent the client's state is in
+
 Dimension.Service
 - ServiceKey: Primary key for the service table
 - ServiceType: The type of service provided to the client
