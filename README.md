@@ -7,6 +7,7 @@
 
 ### Docker Images Used: ###
 MS SQL: https://hub.docker.com/_/microsoft-azure-sql-edge
+
 Adminer: https://hub.docker.com/_/adminer/
 
 ### SQL Server Client Used: ###
