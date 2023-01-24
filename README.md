@@ -45,6 +45,7 @@ Azure Data Studio: https://azure.microsoft.com/en-us/products/data-studio
 
   (if you named your container something else, enter the name where 'sqldb' is located in my command)
   go to localhost:8080 on your browser, you should see a login screen, this is where our SQL Credentials from before come in handy!
+  
 9. Select MS SQL from the dropdown menu, enter 'SA' for username, and 'AdminPassword' for password (of course use your own password if you chose to change it) You can leave the database section blank for now, press enter
 10. You should now be located in your Adminer 'dashboard' (see an example of this in the images folder). Because the Scripts you ran previously created dbo views, you should see them on the left hand side of your screen, feel free to check them out!
 11. Play around, edit things, add things, have fun!
