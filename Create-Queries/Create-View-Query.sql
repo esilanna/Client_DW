@@ -50,7 +50,7 @@ CREATE VIEW dbo.SalesInEast
         SELECT Accounts.AccountID, Accounts.LocationKey, Accounts.InvoiceTotal, 
             Location.City, Location.State, Location.Zip
         FROM Fact.Accounts JOIN Dimension.[Location] ON Accounts.LocationKey = [Location].LocationKey
-        WHERE Dimension.[Location].[StateName] = 'New York' OR Dimension.[Location].[StateName] = 'Miami'
+        WHERE Dimension.[Location].[StateName] = 'New York' OR Dimension.[Location].[StateName] = 'Florida'
 ;
 GO
 

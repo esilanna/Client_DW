@@ -18,16 +18,12 @@ FROM dbo.HighestPayingCustomers
 ORDER BY InvoiceTotal DESC;
 GO
 
-SELECT *
-FROM dbo.HighestPayingStates
-ORDER BY InvoiceTotal DESC;
-GO
-
 SELECT * 
-FROM dbo.SalesInEast;
+FROM dbo.SalesInEast
+ORDER BY State;
 GO
 
 SELECT * 
 FROM dbo.SalesInWest
-ORDER BY City;
+ORDER BY State;
 GO
