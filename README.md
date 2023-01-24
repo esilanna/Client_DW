@@ -14,6 +14,9 @@ Azure Data Studio: https://azure.microsoft.com/en-us/products/data-studio
 
 ⭐️ All SQL Queries for the current version of Client Log DW are in their respective folders, images of the Star Schema ER Diagram and sample outputs/Sample Adminer View will be linked in the Images folder ⭐️
 
+### Star Schema Diagram: ###
+![Star Schema Diagram]!(Client_DW/Images/Star-Schema-Diagram.png)
+
 **Version One: MVP**
 - Basic Star Schema Defined
 - Working MS SQL Docker Container 
