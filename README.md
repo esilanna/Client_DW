@@ -7,12 +7,16 @@
 
 ### Docker Images Used: ###
 MS SQL: https://hub.docker.com/_/microsoft-azure-sql-edge
+
 Adminer: https://hub.docker.com/_/adminer/
 
 ### SQL Server Client Used: ###
 Azure Data Studio: https://azure.microsoft.com/en-us/products/data-studio
 
 ⭐️ All SQL Queries for the current version of Client Log DW are in their respective folders, images of the Star Schema ER Diagram and sample outputs/Sample Adminer View will be linked in the Images folder ⭐️
+
+### Star Schema Diagram: ###
+![Star Schema Diagram](https://github.com/esilanna/Client_DW/blob/main/Images/Star-Schema-Diagram.png)
 
 **Version One: MVP**
 - Basic Star Schema Defined
@@ -32,7 +36,7 @@ Azure Data Studio: https://azure.microsoft.com/en-us/products/data-studio
 1. Install Docker and make sure you can access Docker Dashboard
 2. Run this command in your terminal to create a container for our MS SQL Data Warehouse: 
 
-**` docker run -d --name sqldb --cap-add SYS_PTRACE \ -e 'ACCEPT_EULA=1' \ -e 'MSSQL_SA_PASSWORD=AdminPassword' \ -p 57000:1433 \ mcr.microsoft.com/azure-sql-edge`**
+      **`docker run --name sqlserver23 -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=GoodStrongPassword!23' -p 1401:1433 -d mcr.microsoft.com/azure-sql-edgee`**
 
 3. Install Azure Data Studio or an MS SQL supporting client to easily connect to our server
 4. Use 'SA' for the username and the password we used above (AdminPassword) to connect to your server ⭐️Disclaimer: this is for educational purposes, if you plan on using this tutorial to store sensitive information DO NOT share your login information :)
@@ -41,7 +45,7 @@ Azure Data Studio: https://azure.microsoft.com/en-us/products/data-studio
 7. By this point you should have your Data Warehouse running and can run the Select queries to view your data (or write your own)
 8. to connect adminer, go to your temrinal and simply execute this command:
 
-**`docker run --link sqldb:db -p 8080:8080 adminer`** 
+      **`docker run --link sqldb:db -p 8080:8080 adminer`** 
 
   (if you named your container something else, enter the name where 'sqldb' is located in my command)
   go to localhost:8080 on your browser, you should see a login screen, this is where our SQL Credentials from before come in handy!
