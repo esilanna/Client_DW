@@ -45,7 +45,7 @@ Azure Data Studio: https://azure.microsoft.com/en-us/products/data-studio
 7. By this point you should have your Data Warehouse running and can run the Select queries to view your data (or write your own)
 8. to connect adminer, go to your temrinal and simply execute this command:
 
-      **`docker run --link sqldb:db -p 8080:8080 adminer`** 
+      **`docker run --link sqlserver23:db -p 8080:8080 adminer`** 
 
   (if you named your container something else, enter the name where 'sqldb' is located in my command)
   go to localhost:8080 on your browser, you should see a login screen, this is where our SQL Credentials from before come in handy!
