@@ -5,6 +5,8 @@
 
 ⭐️ Disclaimer: Because I am operating on macOS & an Apple Chip, my MS SQL Server is running in a Docker Container ⭐️
 
+### Install Docker Here: https://docs.docker.com/get-docker/ ###
+
 ### Docker Images Used: ###
 MS SQL: https://hub.docker.com/_/microsoft-azure-sql-edge
 
@@ -39,9 +41,9 @@ Azure Data Studio: https://azure.microsoft.com/en-us/products/data-studio
       **`docker run --name sqlserver23 -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=GoodStrongPassword!23' -p 1401:1433 -d mcr.microsoft.com/azure-sql-edgee`**
 
 3. Install Azure Data Studio or an MS SQL supporting client to easily connect to our server
-4. Use 'SA' for the username and the password we used above (AdminPassword) to connect to your server ⭐️Disclaimer: this is for educational purposes, if you plan on using this tutorial to store sensitive information DO NOT share your login information :)
+4. Use 'SA' for the username and the password we used above (GoodStrongPassword!23) to connect to your server ⭐️ Disclaimer: this is for educational purposes, if you plan on using this tutorial to store sensitive information DO NOT share your login information :)
 5. Clone this repository and run the queries in the Create-Queries and Alter-Queries folder
-6. You should now have a 'ClientDW' database running on your server. From here you can use your favorite editor (I use VS Code) to run the **writer.py** script which is located in the Data-Generation folder (make sure to poke around the writer.py file and change the num_data_entries if you would like :)). After doing so, you should now have dummy data generated in your Insert-Queries folder.
+6. You should now have a 'ClientDW' database running on your server. From here you can use your favorite editor (I use VS Code) to run the **writer.py** script which is located in the Data-Generation folder (make sure to poke around the writer.py file and change the num_data_entries if you would like more or less data entries generated :)). After doing so, you should now have dummy data generated in your Insert-Queries folder.
 7. By this point you should have your Data Warehouse running and can run the Select queries to view your data (or write your own)
 8. to connect adminer, go to your temrinal and simply execute this command:
 
@@ -53,3 +55,5 @@ Azure Data Studio: https://azure.microsoft.com/en-us/products/data-studio
 9. Select MS SQL from the dropdown menu, enter 'SA' for username, and 'AdminPassword' for password (of course use your own password if you chose to change it) You can leave the database section blank for now, press enter
 10. You should now be located in your Adminer 'dashboard' (see an example of this in the images folder). Because the Scripts you ran previously created dbo views, you should see them on the left hand side of your screen, feel free to check them out!
 11. Play around, edit things, add things, have fun!
+
+**To see more information about the structure of ClientDW, take a look at the DOCUMENTATION file in this repo**
