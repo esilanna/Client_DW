@@ -20,7 +20,7 @@ ORDER BY [Account Table Location Key] DESC
 
 -- Query to show how how many accounts are using each service --
 SELECT COUNT(Fact.Accounts.ServiceKey) AS "Account Table Service Key",
-    Dimension.Service.ServiceType
+    Dimension.Service.ServiceType, SUM(Fact.Accounts.InvoiceTotal) AS "Total of Invoices Per Service"
 FROM Fact.Accounts JOIN Dimension.Service ON 
     Fact.Accounts.ServiceKey = Dimension.Service.ServiceKey
 GROUP BY Service.ServiceType
