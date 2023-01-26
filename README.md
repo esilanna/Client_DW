@@ -44,7 +44,8 @@ Azure Data Studio: https://azure.microsoft.com/en-us/products/data-studio
 3. Install Azure Data Studio or an MS SQL supporting client to easily connect to our server
 4. Use localhost for the server, click advanced and use 1401 for the port, go back to other settings and use 'SA' for the username and the password we used above (GoodStrongPassword!23) to connect to your server ⭐️ Disclaimer: this is for educational purposes, if you plan on using this tutorial to store sensitive information DO NOT share your login information :)
 5. Clone this repository and run the queries in the Create-Queries and Alter-Queries folder
-6. You should now have a 'ClientDW' database running on your server. From here you can use your favorite editor (I use VS Code) to run the **writer.py** script which is located in the Data-Generation folder (make sure to poke around the writer.py file and change the num_data_entries if you would like more or less data entries generated :)). After doing so, you should now have dummy data generated in your Insert-Queries folder.
+6. You should now have a 'ClientDW' database running on your server. I have included python generated data already in the insert queries for an example, but if you would like ot delete these and generate new data follow these instructions: From here you can use your favorite editor (I use VS Code) to run the **writer.py** script which is located in the Data-Generation folder (make sure to poke around the writer.py file and change the num_data_entries if you would like more or less data entries generated :)). 
+  After doing so, you should now have dummy data generated in your Insert-Queries folder and can run these insert queries.
 7. By this point you should have your Data Warehouse running and can run the Select queries to view your data (or write your own)
 8. to connect adminer, go to your temrinal and simply execute this command:
 
