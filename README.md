@@ -39,7 +39,7 @@ Azure Data Studio: https://azure.microsoft.com/en-us/products/data-studio
 1. Install Docker and make sure you can access Docker Dashboard
 2. Run this command in your terminal to create a container for our MS SQL Data Warehouse: 
 
-      **`docker run --name sqlserver23 -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=GoodStrongPassword!23' -p 1401:1433 -d mcr.microsoft.com/azure-sql-edgee`**
+      **`docker run --name sqlserver23 -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=GoodStrongPassword!23' -p 1401:1433 -d mcr.microsoft.com/azure-sql-edge`**
 
 3. Install Azure Data Studio or an MS SQL supporting client to easily connect to our server
 4. Use 'SA' for the username and the password we used above (GoodStrongPassword!23) to connect to your server ⭐️ Disclaimer: this is for educational purposes, if you plan on using this tutorial to store sensitive information DO NOT share your login information :)
